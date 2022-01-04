@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+typedef PlayNoteFunction = void Function(int noteNumber);
+
 class MyHomePage extends StatelessWidget {
   const MyHomePage({
     Key? key,
@@ -27,19 +30,31 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AudioCache audioPlayer = AudioCache();
+
+    void playNote(int noteNumber) {
+      audioPlayer.play('note$noteNumber.wav');
+    }
+
     return Scaffold(
       body: Container(
         color: Colors.black,
         child: SafeArea(
           child: Column(
-            children: const [
-              PlayfulColor(noteNumber: 1, color: Colors.red),
-              PlayfulColor(noteNumber: 2, color: Colors.orange),
-              PlayfulColor(noteNumber: 3, color: Colors.yellow),
-              PlayfulColor(noteNumber: 4, color: Colors.green),
-              PlayfulColor(noteNumber: 5, color: Colors.teal),
-              PlayfulColor(noteNumber: 6, color: Colors.blue),
-              PlayfulColor(noteNumber: 7, color: Colors.purple),
+            children: [
+              PlayfulColor(onPress: playNote, noteNumber: 1, color: Colors.red),
+              PlayfulColor(
+                  onPress: playNote, noteNumber: 2, color: Colors.orange),
+              PlayfulColor(
+                  onPress: playNote, noteNumber: 3, color: Colors.yellow),
+              PlayfulColor(
+                  onPress: playNote, noteNumber: 4, color: Colors.green),
+              PlayfulColor(
+                  onPress: playNote, noteNumber: 5, color: Colors.teal),
+              PlayfulColor(
+                  onPress: playNote, noteNumber: 6, color: Colors.blue),
+              PlayfulColor(
+                  onPress: playNote, noteNumber: 7, color: Colors.purple),
             ],
           ),
         ),
@@ -51,14 +66,22 @@ class MyHomePage extends StatelessWidget {
 class PlayfulColor extends StatelessWidget {
   final MaterialColor color;
   final int noteNumber;
-  const PlayfulColor({Key? key, required this.color, required this.noteNumber})
+  final PlayNoteFunction onPress;
+
+  const PlayfulColor(
+      {Key? key,
+      required this.color,
+      required this.noteNumber,
+      required this.onPress})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () {
+          onPress(noteNumber);
+        },
         child: Container(
           color: color,
         ),
