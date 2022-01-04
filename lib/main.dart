@@ -37,26 +37,21 @@ class MyHomePage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: Container(
-        color: Colors.black,
-        child: SafeArea(
-          child: Column(
-            children: [
-              PlayfulColor(onPress: playNote, noteNumber: 1, color: Colors.red),
-              PlayfulColor(
-                  onPress: playNote, noteNumber: 2, color: Colors.orange),
-              PlayfulColor(
-                  onPress: playNote, noteNumber: 3, color: Colors.yellow),
-              PlayfulColor(
-                  onPress: playNote, noteNumber: 4, color: Colors.green),
-              PlayfulColor(
-                  onPress: playNote, noteNumber: 5, color: Colors.teal),
-              PlayfulColor(
-                  onPress: playNote, noteNumber: 6, color: Colors.blue),
-              PlayfulColor(
-                  onPress: playNote, noteNumber: 7, color: Colors.purple),
-            ],
-          ),
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Column(
+          children: [
+            PlayfulColor(onPress: playNote, noteNumber: 1, color: Colors.red),
+            PlayfulColor(
+                onPress: playNote, noteNumber: 2, color: Colors.orange),
+            PlayfulColor(
+                onPress: playNote, noteNumber: 3, color: Colors.yellow),
+            PlayfulColor(onPress: playNote, noteNumber: 4, color: Colors.green),
+            PlayfulColor(onPress: playNote, noteNumber: 5, color: Colors.teal),
+            PlayfulColor(onPress: playNote, noteNumber: 6, color: Colors.blue),
+            PlayfulColor(
+                onPress: playNote, noteNumber: 7, color: Colors.purple),
+          ],
         ),
       ),
     );
