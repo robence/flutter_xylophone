@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AudioCache audioPlayer = AudioCache();
+    final audioPlayer = AudioCache();
 
     void playNote(int noteNumber) {
       audioPlayer.play('note$noteNumber.wav');
